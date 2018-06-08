@@ -12,7 +12,7 @@ module Tr4n5l4te
     end
 
     def translate(text, from_lang, to_lang)
-      puts "Translating: #{text}"
+      puts "Translating: #{text}" 
       encoded_text = validate_and_encode(text)
       smart_visit(translator_url(encoded_text, from_lang, to_lang))
       result_box = browser.find('#result_box')
