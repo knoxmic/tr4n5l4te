@@ -12,10 +12,11 @@ module Tr4n5l4te
     end
 
     def translate(text, from_lang, to_lang)
-      puts "Translating: #{text}" 
+      puts "Translating: #{text}"
       encoded_text = validate_and_encode(text)
       smart_visit(translator_url(encoded_text, from_lang, to_lang))
-      result_box = browser.find('#result_box')
+      # result_box = browser.find('#result_box')
+      result_box = browser.find('span.tlid-translation')
       result_box.text
     end
 
@@ -36,7 +37,7 @@ module Tr4n5l4te
     end
 
     def translator_url(encoded_text, from_lang, to_lang)
-      "#{START_PAGE}/##{from_lang}/#{to_lang}/#{encoded_text}"
+      "#{START_PAGE}/#view=home&op=translate&sl=#{from_lang}&tl=#{to_lang}&text=#{encoded_text}"
     end
 
     def store_cookies
